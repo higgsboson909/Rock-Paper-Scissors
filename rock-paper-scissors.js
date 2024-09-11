@@ -14,3 +14,15 @@ function getComputerChoice(){
     }
 }
 
+// return human choice
+function getHumanChoice(){
+    let choice = prompt("- Rock\n- Paper\n- Scissors\nEnter your choice : ");
+    choice = choice.toLowerCase();                                                      // modify player input to lowercase
+    if(choice === "rock" || choice === "paper" || choice === "scissors"){               // user choice validation
+        return choice;
+    }
+    else{
+        alert("You have entered wrong choice!\nTry Again");
+        getHumanChoice();
+    }
+}
