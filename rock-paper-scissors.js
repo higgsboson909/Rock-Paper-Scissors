@@ -26,3 +26,43 @@ function getHumanChoice(){
         getHumanChoice();
     }
 }
+
+// store score of both players
+let humanScore = 0;
+let computerScore = 0;
+
+// play the match, announce the winner & increase the score
+function playRound(humanChoice, computerChoice){
+    if(humanChoice === computerChoice){
+        alert("Match is draw");
+    }
+    else if(humanChoice === "rock" && computerChoice === "paper"){
+        alert(`You lose! $computerChoice beats $humanChoice`);
+        computerScore++;
+    }
+    else if(humanChoice === "rock" && computerChoice === "scissors"){
+        alert(`You won! $humanChoice beats $computerChoice`);
+        humanScore++;
+    }
+    else if(humanChoice === "paper" && computerChoice === "rock"){
+        alert(`You won! $computerChoice beats $humanChoice`);
+        humanScore++;
+    }
+    else if(humanChoice === "paper" && computerChoice === "scissors"){
+        alert(`You lose! $computerChoice beats $humanChoice`);
+        computerScore++;
+    }
+    else if(humanChoice === "scissors" && computerChoice === "paper"){
+        alert(`You Won! $humanChoice beats $computerChoice`);
+        humanChoice++;
+    }
+    else if(humanChoice === "scissors" && computerChoice === "rock"){
+        alert(`You lose! $computerChoice beats $humanChoice`);
+        computerScore++;
+    }
+    
+
+
+
+
+}
