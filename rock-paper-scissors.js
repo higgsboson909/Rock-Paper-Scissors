@@ -23,7 +23,7 @@ function getHumanChoice(){
     }
     else{
         alert("You have entered wrong choice!\nTry Again");
-        getHumanChoice();
+        return getHumanChoice();
     }
 }
 
@@ -62,15 +62,19 @@ function playRound(humanChoice, computerChoice){
     }   
 }
 
-// // choices returned to constants
-// const humanSelection = getHumanChoice();
-// const computerSelection = getComputerChoice();
+
 
 // 5 rounds of game
 function playGame(){
     for(let i = 0; i < 5; i++){
+
         alert(`Round ${i + 1} of 5`);
-        playRound(getHumanChoice(), getComputerChoice());   
+
+        // fresh choices returned to constants each time 
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+
+        playRound(humanSelection, computerSelection);   
     }
     alert(`Your total score is ${humanScore}`);
 }
