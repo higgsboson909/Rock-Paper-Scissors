@@ -62,9 +62,17 @@ function playRound(humanChoice, computerChoice){
     }   
 }
 
-// choices returned to constants
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+// // choices returned to constants
+// const humanSelection = getHumanChoice();
+// const computerSelection = getComputerChoice();
 
+// 5 rounds of game
+function playGame(){
+    for(let i = 0; i < 5; i++){
+        alert(`Round ${i + 1} of 5`);
+        playRound(getHumanChoice(), getComputerChoice());   
+    }
+    alert(`Your total score is ${humanScore}`);
+}
 
-
+playGame();
