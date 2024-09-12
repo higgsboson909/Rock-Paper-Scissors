@@ -37,7 +37,7 @@ function playRound(humanChoice, computerChoice){
         alert("Match is draw");
     }
     else if(humanChoice === "rock" && computerChoice === "paper"){
-        alert(`You lose! ${computerChoice} beats ${humanChoice}`);
+        alert(`You lost! ${computerChoice} beats ${humanChoice}`);
         computerScore++;
     }
     else if(humanChoice === "rock" && computerChoice === "scissors"){
@@ -49,15 +49,15 @@ function playRound(humanChoice, computerChoice){
         humanScore++;
     }
     else if(humanChoice === "paper" && computerChoice === "scissors"){
-        alert(`You lose! ${computerChoice} beats ${humanChoice}`);
+        alert(`You lost! ${computerChoice} beats ${humanChoice}`);
         computerScore++;
     }
     else if(humanChoice === "scissors" && computerChoice === "paper"){
-        alert(`You Won! ${humanChoice} beats ${computerChoice}`);
+        alert(`You won! ${humanChoice} beats ${computerChoice}`);
         humanScore++;
     }
     else if(humanChoice === "scissors" && computerChoice === "rock"){
-        alert(`You lose! ${computerChoice} beats ${humanChoice}`);
+        alert(`You lost! ${computerChoice} beats ${humanChoice}`);
         computerScore++;
     }   
 }
@@ -74,9 +74,20 @@ function playGame(){
         const humanSelection = getHumanChoice();
         const computerSelection = getComputerChoice();
 
+        // function for single round
         playRound(humanSelection, computerSelection);   
     }
-    alert(`Your total score is ${humanScore}`);
+
+    // winner of game i.e 5 rounds
+    if(humanScore > computerScore){
+        alert(`Congrats!\nYou Won...\nYour total score is ${humanScore}\nComputer Score is ${computerScore}`);
+    }
+    else if(humanScore === computerScore){
+        alert(`Match is Tie\nYour total score is ${humanScore}\nComputer Score is ${computerScore}`);
+    }
+    else{
+        alert(`You Lost...\nTry your luck next time\nYour total score is ${humanScore}\nComputer Score is ${computerScore}`);
+    }
 }
 
 playGame();
