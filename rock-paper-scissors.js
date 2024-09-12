@@ -62,9 +62,9 @@ function playRound(humanChoice, computerChoice){
     }   
 }
 
-let humanSelection = getHumanChoice();
-let computerSelection = getComputerChoice();
+// choices returned to constants
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection);
 
 
