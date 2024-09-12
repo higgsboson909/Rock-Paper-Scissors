@@ -37,32 +37,34 @@ function playRound(humanChoice, computerChoice){
         alert("Match is draw");
     }
     else if(humanChoice === "rock" && computerChoice === "paper"){
-        alert(`You lose! $computerChoice beats $humanChoice`);
+        alert(`You lose! ${computerChoice} beats ${humanChoice}`);
         computerScore++;
     }
     else if(humanChoice === "rock" && computerChoice === "scissors"){
-        alert(`You won! $humanChoice beats $computerChoice`);
+        alert(`You won! ${humanChoice} beats ${computerChoice}`);
         humanScore++;
     }
     else if(humanChoice === "paper" && computerChoice === "rock"){
-        alert(`You won! $computerChoice beats $humanChoice`);
+        alert(`You won! ${humanChoice} beats ${computerChoice}`);
         humanScore++;
     }
     else if(humanChoice === "paper" && computerChoice === "scissors"){
-        alert(`You lose! $computerChoice beats $humanChoice`);
+        alert(`You lose! ${computerChoice} beats ${humanChoice}`);
         computerScore++;
     }
     else if(humanChoice === "scissors" && computerChoice === "paper"){
-        alert(`You Won! $humanChoice beats $computerChoice`);
-        humanChoice++;
+        alert(`You Won! ${humanChoice} beats ${computerChoice}`);
+        humanScore++;
     }
     else if(humanChoice === "scissors" && computerChoice === "rock"){
-        alert(`You lose! $computerChoice beats $humanChoice`);
+        alert(`You lose! ${computerChoice} beats ${humanChoice}`);
         computerScore++;
-    }
-    
-
-
-
-
+    }   
 }
+
+let humanSelection = getHumanChoice();
+let computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
+
+
