@@ -1,4 +1,4 @@
-// return computer's choice
+// // return computer's choice
 function getComputerChoice(){
     let randValue = Math.floor(Math.random() * 3);          // random num reduced to only 3 values
     switch(randValue){
@@ -11,21 +11,28 @@ function getComputerChoice(){
     }
 }
 
-// return human choice
-function getHumanChoice(){
-    let choice;
-    
-    // for input validation
-    do{
-        choice = prompt("- Rock\n- Paper\n- Scissors\nEnter your choice : ");
-        choice = choice.toLowerCase();                          // modify player input to lowercase
-        if(choice !== "rock" && choice !== "paper" && choice !== "scissors"){
-            alert("Invalid Choice!\nTry Again...")
-        }                                            
-    }while(choice !== "rock" && choice !== "paper" && choice !== "scissors");
+// // return human choice
+// function getHumanChoice(){
+//     let choice;
+// // listen to button click
+//     const list = document.querySelector(".uList");
+//     list.addEventListener('click', function (e){
+//         let target = e.target;
+//         switch(target.id){
+//             case 'rock':
+//                 choice = "rock";
+//                 break;
+//             case 'paper':
+//                 choice = "paper";
+//                 break;
+//             case 'scissors':
+//                 choice = "scissors";
+//                 break;
+//         }
+//     });
 
-    return choice;          // return choice if input is valid
-}
+//     return choice;
+// }
 
 // store score of both players
 let humanScore = 0;
@@ -34,60 +41,56 @@ let computerScore = 0;
 // play the match, announce the winner & increase the score
 function playRound(humanChoice, computerChoice){
     if(humanChoice === computerChoice){
-        alert("Match is draw");
+        console.log("Match is draw");
     }
     else if(humanChoice === "rock" && computerChoice === "paper"){
-        alert(`You lost! ${computerChoice} beats ${humanChoice}`);
+        console.log(`You lost! ${computerChoice} beats ${humanChoice}`);
         computerScore++;
     }
     else if(humanChoice === "rock" && computerChoice === "scissors"){
-        alert(`You won! ${humanChoice} beats ${computerChoice}`);
+        console.log(`You won! ${humanChoice} beats ${computerChoice}`);
         humanScore++;
     }
     else if(humanChoice === "paper" && computerChoice === "rock"){
-        alert(`You won! ${humanChoice} beats ${computerChoice}`);
+        console.log(`You won! ${humanChoice} beats ${computerChoice}`);
         humanScore++;
     }
     else if(humanChoice === "paper" && computerChoice === "scissors"){
-        alert(`You lost! ${computerChoice} beats ${humanChoice}`);
+        console.log(`You lost! ${computerChoice} beats ${humanChoice}`);
         computerScore++;
     }
     else if(humanChoice === "scissors" && computerChoice === "paper"){
-        alert(`You won! ${humanChoice} beats ${computerChoice}`);
+        console.log(`You won! ${humanChoice} beats ${computerChoice}`);
         humanScore++;
     }
     else if(humanChoice === "scissors" && computerChoice === "rock"){
-        alert(`You lost! ${computerChoice} beats ${humanChoice}`);
+        console.log(`You lost! ${computerChoice} beats ${humanChoice}`);
         computerScore++;
     }   
 }
 
+let humanSelection;
+let computerSelection;
 
 
-// 5 rounds of game
-function playGame(){
-    for(let i = 0; i < 5; i++){
+const list = document.querySelector(".uList");
+list.addEventListener('click', function (e){
+    let target = e.target;
+    switch(target.id){
+        case "rock":
+            humanSelection = target.id;
+            playRound(humanSelection, getComputerChoice());
 
-        alert(`Round ${i + 1} of 5`);
+            break;
+        case "paper":
+            humanSelection = target.id;
+            playRound(humanSelection, getComputerChoice());
 
-        // fresh choices returned to constants each time 
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
+            break;
+        case "scissors":
+            humanSelection = target.id;
+            playRound(humanSelection, getComputerChoice());
 
-        // function for single round
-        playRound(humanSelection, computerSelection);   
+            break;
     }
-
-    // winner of game i.e 5 rounds
-    if(humanScore > computerScore){
-        alert(`Congrats!\nYou Won...\nYour total score is ${humanScore}\nComputer Score is ${computerScore}`);
-    }
-    else if(humanScore === computerScore){
-        alert(`Match is Tie\nYour total score is ${humanScore}\nComputer Score is ${computerScore}`);
-    }
-    else{
-        alert(`You Lost...\nTry your luck next time\nYour total score is ${humanScore}\nComputer Score is ${computerScore}`);
-    }
-}
-
-playGame();
+})
