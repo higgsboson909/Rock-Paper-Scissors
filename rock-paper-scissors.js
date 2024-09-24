@@ -17,7 +17,7 @@ let nav = document.querySelector("nav");
 announcement1.textContent = "Select You Choice";
 announcement2.textContent = "First to score 5 points will be the winner";
 
-// add to DOM
+// insert into DOM
 nav.after(announcement1);
 announcement1.style.cssText = "text-align: center; font-weight: 700; font-size: x-large; padding-left: 30px; padding-right: 30px;";
 announcement1.after(announcement2);
@@ -46,7 +46,6 @@ scoreDiv.classList.add("score");
 // play the match, announce the winner & increase the score
 function playRound(humanChoice, computerChoice){
         uList.after(resultDiv);
-
 
         if(humanChoice === computerChoice){
             resultDiv.textContent = "Match is draw";
@@ -112,12 +111,18 @@ function playRound(humanChoice, computerChoice){
 
 let humanSelection;
 let computerSelection;
+
+//  refer to the list of images
 let uList = document.querySelector(".uList");
 
+// event listener for click
     uList.addEventListener('click', function (e){
-    if(humanScore === 5 || computerScore === 5){
+    
+        // abort the eventListening process if a player has won
+        if(humanScore === 5 || computerScore === 5){
         return;
     }
+    // used the target property of 'click'
     let target = e.target;
     switch(target.id){
         case "rock":
