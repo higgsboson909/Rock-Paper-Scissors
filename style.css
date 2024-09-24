@@ -9,9 +9,8 @@
 
 h1{
     text-align: center;
-    width: 300px;
     background-color: #d5cabd;
-    padding: 10px 10px;
+    padding: 10px 30px 10px 30px;
     margin-left: auto;
     margin-right: auto;
     font-size: xx-large;
@@ -30,9 +29,9 @@ nav{
 
 .uList{
     display: flex;
-    width: 600px;
-    padding-top: 45px;
-    padding-bottom: 35px;
+    flex-wrap: wrap;
+    gap: 80px;
+    padding: 45px 30px 35px 30px;
     margin-left: auto;
     margin-right: auto;
     justify-content: space-around;
@@ -56,17 +55,20 @@ nav{
     margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
+    padding-left: 0px 30px 40px 30px;
     gap: 60px;
+    padding-bottom: 40px;
     margin-left: auto;
     margin-right: auto;
     justify-content: space-around;
 }
 
 .score li{
+
+    width: 200px;
     background-color: #d5cabd;
     font-size: x-large;
-    text-align: space-ar;
+    text-align: center;
     border: solid 2px #d5cabd;
     border-radius: 5px;
-    padding: 5px;
 }
