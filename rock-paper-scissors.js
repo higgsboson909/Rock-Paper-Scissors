@@ -1,3 +1,29 @@
+
+let humanScore = 0;
+let computerScore = 0;
+
+
+// create elements for score, result, scoreList & announcements 
+let resultDiv = document.createElement("div");
+let scoreDiv = document.createElement("ul")
+let pScore = document.createElement("li");
+let cScore = document.createElement("li")
+let announcement1 = document.createElement("div");
+let announcement2 = document.createElement("div");
+
+// reference for nav
+let nav = document.querySelector("nav");
+// text content for announcements
+announcement1.textContent = "Select You Choice";
+announcement2.textContent = "First to score 5 points will be the winner";
+
+// add to DOM
+nav.after(announcement1);
+announcement1.style.cssText = "text-align: center; font-weight: 700; font-size: x-large; padding-left: 30px; padding-right: 30px;";
+announcement1.after(announcement2);
+announcement2.style.cssText = "font-weight: 600; text-align: center; padding-top: 10px; font-size: larger; padding-left: 30px; padding-right: 30px;";
+
+
 // // return computer's choice
 function getComputerChoice(){
     let randValue = Math.floor(Math.random() * 3);          // random num reduced to only 3 values
@@ -11,86 +37,97 @@ function getComputerChoice(){
     }
 }
 
-// // return human choice
-// function getHumanChoice(){
-//     let choice;
-// // listen to button click
-//     const list = document.querySelector(".uList");
-//     list.addEventListener('click', function (e){
-//         let target = e.target;
-//         switch(target.id){
-//             case 'rock':
-//                 choice = "rock";
-//                 break;
-//             case 'paper':
-//                 choice = "paper";
-//                 break;
-//             case 'scissors':
-//                 choice = "scissors";
-//                 break;
-//         }
-//     });
 
-//     return choice;
-// }
+// create classes to control score & result elements
+resultDiv.classList.add("result")
+scoreDiv.classList.add("score");
 
-// store score of both players
-let humanScore = 0;
-let computerScore = 0;
 
 // play the match, announce the winner & increase the score
 function playRound(humanChoice, computerChoice){
-    if(humanChoice === computerChoice){
-        console.log("Match is draw");
-    }
-    else if(humanChoice === "rock" && computerChoice === "paper"){
-        console.log(`You lost! ${computerChoice} beats ${humanChoice}`);
-        computerScore++;
-    }
-    else if(humanChoice === "rock" && computerChoice === "scissors"){
-        console.log(`You won! ${humanChoice} beats ${computerChoice}`);
-        humanScore++;
-    }
-    else if(humanChoice === "paper" && computerChoice === "rock"){
-        console.log(`You won! ${humanChoice} beats ${computerChoice}`);
-        humanScore++;
-    }
-    else if(humanChoice === "paper" && computerChoice === "scissors"){
-        console.log(`You lost! ${computerChoice} beats ${humanChoice}`);
-        computerScore++;
-    }
-    else if(humanChoice === "scissors" && computerChoice === "paper"){
-        console.log(`You won! ${humanChoice} beats ${computerChoice}`);
-        humanScore++;
-    }
-    else if(humanChoice === "scissors" && computerChoice === "rock"){
-        console.log(`You lost! ${computerChoice} beats ${humanChoice}`);
-        computerScore++;
-    }   
+        uList.after(resultDiv);
+
+
+        if(humanChoice === computerChoice){
+            resultDiv.textContent = "Match is draw";
+        }
+        else if(humanChoice === "rock" && computerChoice === "paper"){
+            resultDiv.textContent = `You lost! Paper beats Rock`;
+            ++computerScore;
+        }
+        else if(humanChoice === "rock" && computerChoice === "scissors"){
+            resultDiv.textContent = `You won! Rock beats Scissors`;
+            ++humanScore;
+        }
+        else if(humanChoice === "paper" && computerChoice === "rock"){
+            resultDiv.textContent = `You won! Paper beats Rock`;
+            ++humanScore;
+        }
+        else if(humanChoice === "paper" && computerChoice === "scissors"){
+            resultDiv.textContent = `You lost! Scissors beats Paper`;
+            ++computerScore;
+        }
+        else if(humanChoice === "scissors" && computerChoice === "paper"){
+            resultDiv.textContent = `You won! Scissors beats Paper`;
+            ++humanScore;
+        }
+        else if(humanChoice === "scissors" && computerChoice === "rock"){
+            resultDiv.textContent = `You lost! Rock beats Scissors`;
+            ++computerScore;
+        }   
+        
+        if(humanScore < 5 && computerScore < 5){
+            resultDiv.after(scoreDiv);
+            scoreDiv.appendChild(pScore);
+            scoreDiv.appendChild(cScore);
+            pScore.textContent = `Your Score: ${humanScore}`;
+            cScore.textContent = `Computer Score: ${computerScore}`;    
+            
+        }
+        else if(computerScore === 5){
+            resultDiv.after(scoreDiv);
+            scoreDiv.appendChild(pScore);
+            scoreDiv.appendChild(cScore);
+            pScore.textContent = `Your Score: ${humanScore}`;
+            cScore.textContent = `Computer Score: ${computerScore}`; 
+            announcement1.style.cssText = "text-align: center; font-weight: 900; font-size: xx-large; padding-left: 30px; padding-right: 30px; color: red";
+            announcement2.style.cssText = "font-weight: 800; text-align: center; padding-top: 10px; font-size: x-large; padding-left: 30px; padding-right: 30px; color: red";
+            announcement1.textContent = "You Lost!";
+            announcement2.textContent = "Refresh the Page to Play Again";
+
+        }
+        else if(humanScore === 5){
+            resultDiv.after(scoreDiv);
+            scoreDiv.appendChild(pScore);
+            scoreDiv.appendChild(cScore);
+            pScore.textContent = `Your Score: ${humanScore}`;
+            cScore.textContent = `Computer Score: ${computerScore}`; 
+            announcement1.style.cssText = "text-align: center; font-weight: 900; font-size: xx-large; padding-left: 30px; padding-right: 30px; color: green";
+            announcement2.style.cssText = "font-weight: 800; text-align: center; padding-top: 10px; font-size: x-large; padding-left: 30px; padding-right: 30px; color: green";
+            announcement1.textContent = "You Won the Game!";
+            announcement2.textContent = "Refresh the Page to Play Again";
+        }
+
 }
 
 let humanSelection;
 let computerSelection;
+let uList = document.querySelector(".uList");
 
-
-const list = document.querySelector(".uList");
-list.addEventListener('click', function (e){
+    uList.addEventListener('click', function (e){
+    if(humanScore === 5 || computerScore === 5){
+        return;
+    }
     let target = e.target;
     switch(target.id){
         case "rock":
-            humanSelection = target.id;
-            playRound(humanSelection, getComputerChoice());
-
+            playRound(target.id, getComputerChoice());
             break;
         case "paper":
-            humanSelection = target.id;
-            playRound(humanSelection, getComputerChoice());
-
-            break;
+            playRound(target.id, getComputerChoice());
+            break;        
         case "scissors":
-            humanSelection = target.id;
-            playRound(humanSelection, getComputerChoice());
-
-            break;
-    }
-})
+            playRound(target.id, getComputerChoice());
+            break;    
+        }
+    });
