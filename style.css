@@ -72,3 +72,30 @@ nav{
     border: solid 2px #d5cabd;
     border-radius: 5px;
 }
+
+.footer{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 6px;
+    justify-content: center;
+    padding: 10px;
+    color: white;
+    background-color: black;
+    bottom: 0;
+    position: fixed;
+    height: 35px;
+}
+.footer div{
+    background-color: inherit;
+
+}
+.footer a{
+    text-decoration: none;
+    background-color: inherit;
+
+}
+a img{
+    background-color: white;
+    border-radius: 50px;    
+}
