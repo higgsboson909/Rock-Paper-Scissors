@@ -31,10 +31,11 @@ nav{
 .uList{
     display: flex;
     width: 600px;
-    padding-top: 25px;
+    padding-top: 45px;
+    padding-bottom: 35px;
     margin-left: auto;
     margin-right: auto;
-    justify-content: space-between
+    justify-content: space-around;
 }
 
 #rock,
@@ -42,4 +43,30 @@ nav{
 #scissors{
     border: rgb(72, 71, 71) 3px solid;
     border-radius: 10px;
+}
+
+.result
+{   
+    margin-bottom: 20px;
+    font-weight: 550;
+    font-size: large;
+    text-align: center;
+}
+.score{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-around;
+}
+
+.score li{
+    background-color: #d5cabd;
+    font-size: x-large;
+    text-align: space-ar;
+    border: solid 2px #d5cabd;
+    border-radius: 5px;
+    padding: 5px;
 }
