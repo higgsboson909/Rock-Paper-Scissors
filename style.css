@@ -99,3 +99,6 @@ a img{
     background-color: white;
     border-radius: 50px;    
 }
+.uList li img:hover{
+    cursor: pointer;
+}
